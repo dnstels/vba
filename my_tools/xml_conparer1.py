@@ -19,11 +19,13 @@ et_new = ET.parse('explanatorynote-01-03.xsd')
 #print(et)
 root = et.getroot()
 path = [regex.sub('', root.tag)]
-outDataSet = pd.DataFrame({'Path':[tuple(path)],'Text':root.text, 'Child_count':len(root), 'Attr': [root.attrib]})
+#outDataSet = pd.DataFrame({'Path':[tuple(path)],'Text':root.text, 'Child_count':len(root), 'Attr': [root.attrib]})
+outDataSet = pd.DataFrame({'Path':[tuple(path)],'Text':root.text, 'Attr': [root.attrib]})
 
 root_new = et_new.getroot()
 path_new = [regex.sub('', root_new.tag)]
-outDataSet_new = pd.DataFrame({'Path':[tuple(path_new)],'Text':root_new.text, 'Child_count':len(root_new), 'Attr': [root_new.attrib]})
+#outDataSet_new = pd.DataFrame({'Path':[tuple(path_new)],'Text':root_new.text, 'Child_count':len(root_new), 'Attr': [root_new.attrib]})
+outDataSet_new = pd.DataFrame({'Path':[tuple(path_new)],'Text':root_new.text, 'Attr': [root_new.attrib]})
 
 def xmlTreeToDataFrame(tree, path, index=0, total=0):
     global outDataSet
@@ -36,7 +38,8 @@ def xmlTreeToDataFrame(tree, path, index=0, total=0):
         pathA.append(regex.sub('',child.tag))
         #bar.printProgressBar(index, total,  prefix = 'Progress ('+str(index)+') :', suffix = 'Complete', length = 50)
         attr=[child.attrib]
-        row=pd.DataFrame({'Path':[tuple(pathA)], 'Text':child.text, 'Child_count':len(child), 'Attr':attr})
+        #row=pd.DataFrame({'Path':[tuple(pathA)], 'Text':child.text, 'Child_count':len(child), 'Attr':attr})
+        row=pd.DataFrame({'Path':[tuple(pathA)], 'Text':child.text, 'Attr':attr})
         #print(row)
         outDataSet = pd.concat([outDataSet, row], axis=0, ignore_index=True)
         if len(child)>0:
@@ -73,3 +76,6 @@ outDataSet_new['Attr'] = outDataSet_new.Attr.transform(lambda k: frozenset(k.ite
 var3 = outDataSet.merge(outDataSet_new, on=['Path','Text','Attr'], how='outer', indicator=True).loc[lambda x: x['_merge'] != 'both']
 
 print(var3)
+
+
+
