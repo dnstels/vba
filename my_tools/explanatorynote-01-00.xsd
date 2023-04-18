@@ -1,0 +1,3293 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+
+    <!-- Основной элемент -->
+    <xs:element name="ExplanatoryNote">
+        <xs:annotation>
+            <xs:documentation>Корневой элемент - пояснительная записка</xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="ExplanatoryNoteNumber" type="string1000" minOccurs="1" maxOccurs="1">
+                    <xs:annotation>
+                        <xs:documentation>Шифр пояснительной записки</xs:documentation>
+                    </xs:annotation>
+                </xs:element>
+                <xs:element name="ExplanatoryNoteYear" type="tYear" minOccurs="1" maxOccurs="1">
+                    <xs:annotation>
+                        <xs:documentation>Год составления пояснительной записки</xs:documentation>
+                    </xs:annotation>
+                </xs:element>
+                <xs:element name="ExplanatoryNoteModifications" type="tExplanatoryNoteModifications" minOccurs="0" maxOccurs="1">
+                    <xs:annotation>
+                        <xs:documentation>Сведения о внесении изменений в проектную документацию</xs:documentation>
+                    </xs:annotation>
+                </xs:element>
+                <xs:element name="ConstructionType" type="tConstructionType" minOccurs="1" maxOccurs="1">
+                    <xs:annotation>
+                        <xs:documentation>Вид работ, на который разрабатывается проектная документация</xs:documentation>
+                    </xs:annotation>
+                </xs:element>
+                <xs:element name="IssueAuthor" type="tAuthor" minOccurs="1" maxOccurs="1">
+                    <xs:annotation>
+                        <xs:documentation>Сведения о лице, подготовившем пояснительную записку, генеральном проектировщике</xs:documentation>
+                    </xs:annotation>
+                </xs:element>
+                <xs:element name="ProjectDocumentationAuthor" type="tAuthor" minOccurs="0" maxOccurs="unbounded">
+                    <xs:annotation>
+                        <xs:documentation>Сведения о лицах, принимавших участие в разработке проектной документации</xs:documentation>
+                    </xs:annotation>
+                </xs:element>
+                <xs:element name="Signer" type="tWorkPerson" minOccurs="1" maxOccurs="unbounded">
+                    <xs:annotation>
+                        <xs:documentation>Лицо, подписавшее документацию</xs:documentation>
+                    </xs:annotation>
+                </xs:element>
+                <xs:choice minOccurs="1" maxOccurs="unbounded">
+                    <xs:element name="Developer" type="tDeveloper" minOccurs="1" maxOccurs="unbounded">
+                        <xs:annotation>
+                            <xs:documentation>Сведения о застройщике</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                    <xs:element name="TechnicalCustomer" type="tTechnicalCustomer" minOccurs="1" maxOccurs="unbounded">
+                        <xs:annotation>
+                            <xs:documentation>Сведения о техническом заказчике</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                </xs:choice>
+                <xs:element name="UsedNorms" type="tUsedNorms" minOccurs="0" maxOccurs="1">
+                    <xs:annotation>
+                        <xs:documentation>Перечень использованных при разработке нормативных требований</xs:documentation>
+                    </xs:annotation>
+                </xs:element>
+                <xs:element name="ProjectDecisionDocuments" type="tDocuments" minOccurs="1" maxOccurs="1">
+                    <xs:annotation>
+                        <xs:documentation>Перечень документов, на основании которых принято решение о разработке проектной документации</xs:documentation>
+                    </xs:annotation>
+                </xs:element>
+                <xs:element name="ProjectInitialDocuments" type="tDocuments" minOccurs="1" maxOccurs="1">
+                    <xs:annotation>
+                        <xs:documentation>Перечень исходно разрешительной документации, кроме отчетной документации по РИИ</xs:documentation>
+                    </xs:annotation>
+                </xs:element>
+                <xs:element name="EngineeringSurveyDocuments" type="tEngineeringSurveyDocuments" minOccurs="0" maxOccurs="1">
+                    <xs:annotation>
+                        <xs:documentation>Перечень отчетных материалов по результатам инженерных изысканий</xs:documentation>
+                    </xs:annotation>
+                </xs:element>
+                <xs:element name="Object" type="tObject" minOccurs="1" maxOccurs="1">
+                    <xs:annotation>
+                        <xs:documentation>Описание объекта капитального строительства</xs:documentation>
+                    </xs:annotation>
+                </xs:element>
+                <xs:element name="LandInfo" type="tLandInfo" minOccurs="0" maxOccurs="1">
+                    <xs:annotation>
+                        <xs:documentation>Сведения о земельных участках, изымаемых для государственных или муниципальных нужд, о земельных участках, в отношении которых устанавливается сервитут, публичный сервитут, обоснование их размеров, если такие размеры не установлены нормами отвода земель для
+                            конкретных видов деятельности, или правилами землепользования и застройки, или проектами планировки, проектами межевания территории, - при необходимости изъятия земельного участка для государственных или муниципальных нужд, установления сервитута, публичного
+                            сервитута</xs:documentation>
+                    </xs:annotation>
+                </xs:element>
+                <xs:element name="LandCategory" type="tLandCategory" minOccurs="0" maxOccurs="1">
+                    <xs:annotation>
+                        <xs:documentation>Сведения о категории земель, на которых располагается (будет располагаться) объект капитального строительства</xs:documentation>
+                    </xs:annotation>
+                </xs:element>
+                <xs:element name="LandWithdrawFunds" type="tTextBlock" minOccurs="0" maxOccurs="1">
+                    <xs:annotation>
+                        <xs:documentation>Сведения о размере средств, требующихся для возмещения правообладателям земельных участков и (или) расположенных на таких земельных участках объектов недвижимого имущества, - в случае их изъятия для государственных или муниципальных нужд</xs:documentation>
+                    </xs:annotation>
+                </xs:element>
+                <xs:element name="LandServitudeFunds" type="tTextBlock" minOccurs="0" maxOccurs="1">
+                    <xs:annotation>
+                        <xs:documentation>Сведения о размере средств, требующихся для возмещения правообладателям земельных участков и (или) расположенных на таких земельных участках объектов недвижимого имущества убытков и (или) в качестве платы правообладателям земельных участков, - в случае установления сервитута, публичного сервитута в отношении таких земельных участков</xs:documentation>
+                    </xs:annotation>
+                </xs:element>
+                <xs:element name="DestroyFunds" type="tTextBlock" minOccurs="0" maxOccurs="1">
+                    <xs:annotation>
+                        <xs:documentation>Сведения о предполагаемых затратах, связанных со сносом зданий и сооружений, переселением людей, переносом сетей инженерно-технического обеспечения</xs:documentation>
+                    </xs:annotation>
+                </xs:element>
+                <xs:element name="PatentsUsed" type="tTextBlock" minOccurs="1" maxOccurs="1">
+                    <xs:annotation>
+                        <xs:documentation>Сведения об использованных в проекте изобретениях, результатах проведенных патентных исследований</xs:documentation>
+                    </xs:annotation>
+                </xs:element>
+                <xs:element name="SoftwareUsed" type="tSoftwareUsed" minOccurs="1" maxOccurs="1">
+                    <xs:annotation>
+                        <xs:documentation>Сведения о компьютерных программах, которые использовались при выполнении расчетов конструктивных элементов зданий, строений и сооружений</xs:documentation>
+                    </xs:annotation>
+                </xs:element>
+                <xs:element name="SpecialRequirements" type="tTextBlock" minOccurs="1" maxOccurs="1">
+                    <xs:annotation>
+                        <xs:documentation>Сведения о наличии разработанных и согласованных специальных технических условий - в случае необходимости разработки таких условий</xs:documentation>
+                    </xs:annotation>
+                </xs:element>
+                <xs:element name="StagesInfo" type="tStagesInfo" minOccurs="1" maxOccurs="1">
+                    <xs:annotation>
+                        <xs:documentation>Обоснование возможности осуществления строительства объекта капитального строительства по этапам строительства с выделением этих этапов (при необходимости)</xs:documentation>
+                    </xs:annotation>
+                    <xs:key name="StageNameKey">
+                        <xs:selector xpath="Stage"/>
+                        <xs:field xpath="Number"/>
+                    </xs:key>
+                </xs:element>
+                <xs:element name="DesignerNote" type="tTextBlock" minOccurs="0" maxOccurs="unbounded">
+                    <xs:annotation>
+                        <xs:documentation>Дополнительное произвольное текстовое описание, подготовленное разработчиком проектной документации</xs:documentation>
+                    </xs:annotation>
+                </xs:element>
+                <xs:element name="DesignerAssurance" type="tDesignerAssurance" minOccurs="1" maxOccurs="1">
+                    <xs:annotation>
+                        <xs:documentation>Заверение проектной организации о том, что проектная документация разработана в соответствии с градостроительным планом земельного участка, заданием на проектирование, градостроительным регламентом, документами об использовании земельного участка для
+                            строительства (в случае если на земельный участок не распространяется действие градостроительного регламента или в отношении его не устанавливается градостроительный регламент), техническими регламентами, в том числе устанавливающими требования по обеспечению безопасной
+                            эксплуатации зданий, строений, сооружений и безопасного использования прилегающих к ним территорий, и с соблюдением технических условий</xs:documentation>
+                    </xs:annotation>
+                </xs:element>
+            </xs:sequence>
+            <xs:attribute name="SchemaVersion" type="tSchemaVersion" use="required">
+                <xs:annotation>
+                    <xs:documentation>Номер версии схемы, используемой при создании пояснительной записки</xs:documentation>
+                </xs:annotation>
+            </xs:attribute>
+            <xs:attribute name="SchemaLink" type="xs:string" use="optional">
+                <xs:annotation>
+                    <xs:documentation>Ссылка на xml-схему на официальном сайте, где опубликована схема</xs:documentation>
+                </xs:annotation>
+            </xs:attribute>
+        </xs:complexType>
+    </xs:element>
+
+    <!-- Описание сложных типов -->
+
+    <xs:complexType name="tAuthor">
+        <xs:annotation>
+            <xs:documentation>Тип определяющий лицо, подготовившее проектную документацию (юридическое лицо, представительство или филиал иностранного юридического лица, индивидуальный проедприниматель)</xs:documentation>
+        </xs:annotation>
+        <xs:choice minOccurs="1" maxOccurs="1">
+            <xs:element name="Organization" type="tOrganization">
+                <xs:annotation>
+                    <xs:documentation>Юридическое лицо</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="ForeignOrganization" type="tForeignOrganization">
+                <xs:annotation>
+                    <xs:documentation>Иностранное юридическое лицо (представительство, филиал)</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="IP" type="tIP">
+                <xs:annotation>
+                    <xs:documentation>Индивидуальный предприниматель</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:choice>
+    </xs:complexType>
+
+    <xs:complexType name="tDeveloper">
+        <xs:annotation>
+            <xs:documentation>Тип определяющий застройщика (юридическое лицо, представительство или филиал иностранного юридического лица, индивидуальный проедприниматель, физическое лицо)</xs:documentation>
+        </xs:annotation>
+        <xs:choice minOccurs="1" maxOccurs="1">
+            <xs:element name="Organization" type="tOrganization">
+                <xs:annotation>
+                    <xs:documentation>Юридическое лицо</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="ForeignOrganization" type="tForeignOrganization">
+                <xs:annotation>
+                    <xs:documentation>Иностранное юридическое лицо (представительство, филиал)</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="IP" type="tIP">
+                <xs:annotation>
+                    <xs:documentation>Индивидуальный предприниматель</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Person" type="tPerson">
+                <xs:annotation>
+                    <xs:documentation>Физическое лицо</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:choice>
+    </xs:complexType>
+
+    <xs:complexType name="tTechnicalCustomer">
+        <xs:annotation>
+            <xs:documentation>Тип определяющий технического заказчика (юридическое лицо)</xs:documentation>
+        </xs:annotation>
+        <xs:choice minOccurs="1" maxOccurs="1">
+            <xs:element name="Organization" type="tOrganization">
+                <xs:annotation>
+                    <xs:documentation>Юридическое лицо</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="ForeignOrganization" type="tForeignOrganization">
+                <xs:annotation>
+                    <xs:documentation>Иностранное юридическое лицо (представительство, филиал)</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:choice>
+    </xs:complexType>
+
+    <xs:complexType name="tOrganization">
+        <xs:annotation>
+            <xs:documentation>Юридическое лицо</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="OrgFullName" type="string1000" minOccurs="1" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Полное наименование юридического лица </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="OrgOGRN" type="tOrgOGRN" minOccurs="1" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Основной государственный регистрационный номер юридического лица</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="OrgINN" type="tOrgINN" minOccurs="1" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Индивидуальный номер налогоплательщика - юридического лица </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="OrgKPP" type="tOrgKPP" minOccurs="1" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Код причины постановки на учет юридического лица</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Address" type="tAddress" minOccurs="1" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Адрес (местонахождение) юридического лица</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Email" type="tEmail" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Адрес электронной почты юридического лица</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="tForeignOrganization">
+        <xs:annotation>
+            <xs:documentation>Иностранное юридическое лицо (филиал, представительство)</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="OrgFullName" type="string1000" minOccurs="1" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Полное наименование иностранного юридического лица (филиала, представительства)</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="OrgINN" type="tOrgINN" minOccurs="1" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Индивидуальный номер налогоплательщика – юридического лица (филиала, представительства)</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="OrgKPP" type="tOrgKPP" minOccurs="1" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Код причины постановки на учет иностранного юридического лица (филиала, представительства)</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Address" type="tAddress" minOccurs="1" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Адрес (местонахождение) филиала или представительства иностранного юридического лица в Российской Федерации</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Email" type="tEmail" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Адрес электронной почты юридического лица (филиала, представительства)</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="tIP">
+        <xs:annotation>
+            <xs:documentation>Индивидуальный предприниматель</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="FamilyName" type="string100" minOccurs="1" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Фамилия</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="FirstName" type="string100" minOccurs="1" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Имя</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="SecondName" type="string100" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Отчество</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="OGRNIP" type="tOGRNIP" minOccurs="1" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Основной государственный регистрационный номер индивидуального предпринимателя</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="PostAddress" type="tPostAddress" minOccurs="1" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Почтовый адрес индивидуального предпринимателя</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Email" type="tEmail" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Адрес электронной почты индивидуального предпринимателя</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="tPerson">
+        <xs:annotation>
+            <xs:documentation>Физическое лицо</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="FamilyName" type="string100" minOccurs="1" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Фамилия</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="FirstName" type="string100" minOccurs="1" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Имя</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="SecondName" type="string100" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Отчество</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="SNILS" type="tSNILS" minOccurs="1" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Страховой номер индивидуального лицевого счёта</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="PostAddress" type="tPostAddress" minOccurs="1" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Почтовый адрес физического лица</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Email" type="tEmail" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Адрес электронной почты</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="tWorkPerson">
+        <xs:annotation>
+            <xs:documentation>Должностное лицо</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="FamilyName" type="string100" minOccurs="1" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Фамилия</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="FirstName" type="string100" minOccurs="1" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Имя</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="SecondName" type="string50" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Отчество</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Position" type="string1000" minOccurs="1" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Должность</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="tAddress">
+        <xs:annotation>
+            <xs:documentation>Адрес</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="Country" type="string200" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Страна</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Region" type="tRegionsRF" minOccurs="1" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Код субъекта Российской Федерации</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="District" type="string200" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Наименование района</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="City" type="string200" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Город</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Settlement" type="string200" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Населенный пункт</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Street" type="string200" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Улица</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Building" type="string200" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Номер здания/сооружения</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Room" type="string200" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Номер помещения</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Note" type="xs:string" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Неформализованное описание адреса</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="tPostAddress">
+        <xs:annotation>
+            <xs:documentation>Почтовый адрес</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="Country" type="string200" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Страна</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Region" type="tRegionsRF" minOccurs="1" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Код субъекта Российской Федерации</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="PostIndex" type="tPostIndex" minOccurs="1" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Почтовый индекс</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="District" type="string200" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Наименование района</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="City" type="string200" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Город</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Settlement" type="string200" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Населенный пункт</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Street" type="string200" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Улица</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Building" type="string200" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Номер здания/сооружения</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Room" type="string200" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Номер помещения</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Note" type="xs:string" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Неформализованное описание адреса</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="tUsedNorms">
+        <xs:sequence>
+            <xs:element name="Norm" type="non-empty-string" minOccurs="1" maxOccurs="unbounded">
+                <xs:annotation>
+                    <xs:documentation>Описание нормативного документа</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="tDocuments">
+        <xs:annotation>
+            <xs:documentation>Документы</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="Document" type="tDocument" minOccurs="1" maxOccurs="unbounded">
+                <xs:annotation>
+                    <xs:documentation>Документ</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    
+    <xs:complexType name="tDocument">
+        <xs:annotation>
+            <xs:documentation>Описание документа</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="DocType" type="tDocumentType" minOccurs="1" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Код типа документа</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="DocName" type="string1000" minOccurs="1" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Наименование документа</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="DocNumber" type="string500" minOccurs="1" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Номер (обозначение, шифр) документа</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="DocDate" type="xs:date" minOccurs="1" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Дата документа</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="DocIssueAuthor" type="string1000" minOccurs="1" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Организации, ИП или физическое лицо - автор документа</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="DocChanges" type="string50" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Примечание об изменении документа</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            
+            <xs:choice minOccurs="1" maxOccurs="1">
+                <xs:element name="File" type="tFile" minOccurs="1" maxOccurs="unbounded">
+                    <xs:annotation>
+                        <xs:documentation>Файл документа или файл фрагмента документа, поданного для проведения экспертизы</xs:documentation>
+                    </xs:annotation>
+                </xs:element>
+                <xs:element name="Included" type="string1000" minOccurs="1" maxOccurs="1">
+                    <xs:annotation>
+                        <xs:documentation>Сведения о документе, приложением к которому является текущий документ и в составе которого поступил на экспертизу</xs:documentation>
+                    </xs:annotation>
+                </xs:element>
+                <xs:element name="Link" type="non-empty-string" minOccurs="1" maxOccurs="1">
+                    <xs:annotation>
+                        <xs:documentation>Ссылка на официально опубликованный документ в сети Интернет</xs:documentation>
+                    </xs:annotation>
+                </xs:element>
+            </xs:choice>
+            
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="tEngineeringSurveyDocuments">
+        <xs:annotation>
+            <xs:documentation>Документы - отчеты о результатах инженерных изысканий</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="Document" type="tEngineeringSurveyDocument" minOccurs="1" maxOccurs="unbounded">
+                <xs:annotation>
+                    <xs:documentation>Документ - отчет о результатах инженерных изысканий</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    
+    <xs:complexType name="tEngineeringSurveyDocument">
+        <xs:annotation>
+            <xs:documentation>Документ - отчет о результатах инженерных изысканий</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="DocType" type="tDocumentType" minOccurs="1" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Код типа документа</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="DocName" type="string1000" minOccurs="1" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Наименование документа</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="DocNumber" type="string500" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Номер (обозначение, шифр) документа</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="DocDate" type="xs:date" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Дата документа</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="FullDocIssueAuthor" type="tAuthor" minOccurs="1" maxOccurs="unbounded">
+                <xs:annotation>
+                    <xs:documentation>Сведения об исполнителе отчета о результатах инженерных изысканий (организация или индивидуальный предприниматель)</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="DocChanges" type="string50" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Примечание об изменении документа</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="File" type="tFile" minOccurs="1" maxOccurs="unbounded">
+                <xs:annotation>
+                    <xs:documentation>Файл документа или файл фрагмента документа, поданного для проведения экспертизы</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="tProjectDocument">
+        <xs:annotation>
+            <xs:documentation>Описание документа - том проектной документации</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="DocName" type="string1000" minOccurs="1" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Наименование документа</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="DocNumber" type="string500" minOccurs="1" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Номер (обозначение, шифр) документа</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="DocChanges" type="string50" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Примечание об изменении документа</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="DocIssueAuthor" type="string1000" minOccurs="1" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Организации, ИП или физическое лицо - автор документа</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="File" type="tFile" minOccurs="1" maxOccurs="unbounded">
+                <xs:annotation>
+                    <xs:documentation>Файл документа или файл фрагмента документа, поданного для проведения экспертизы</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="tFile">
+        <xs:annotation>
+            <xs:documentation>Файл документа или файл фрагмента документа</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="FileName" type="tFileName" minOccurs="1" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Имя файла документа</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="FileFormat" type="tFileFormat" minOccurs="1" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Формат файла документа</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="FileRelativePath" type="xs:string" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Относительный путь к файлу</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="FileChecksum" type="tFileChecksum" minOccurs="1" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Контрольная сумма CRC32 файла документа</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="SignFile" type="tSignFile" minOccurs="0" maxOccurs="unbounded">
+                <xs:annotation>
+                    <xs:documentation>Файл подписи к основному файлу документа</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="tSignFile">
+        <xs:annotation>
+            <xs:documentation>Файл подписи к документу</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="FileName" type="tFileName" minOccurs="1" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Имя файла подписи к документу</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="FileFormat" type="tFileFormat" minOccurs="1" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Формат файла подписи к документу</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="RelativePath" type="xs:string" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Относительный путь к файлу</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="FileChecksum" type="tFileChecksum" minOccurs="1" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Контрольная сумма CRC32 файла подписи документа</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    
+    <xs:complexType name="tProjectDocumentSection">
+        <xs:annotation>
+            <xs:documentation>Документы и подразделы, в составе раздела проектной документации</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:choice minOccurs="1" maxOccurs="unbounded">
+                <xs:element name="Document" type="tProjectDocument" minOccurs="0" maxOccurs="unbounded">
+                    <xs:annotation>
+                        <xs:documentation>Документ</xs:documentation>
+                    </xs:annotation>
+                </xs:element>
+                <xs:element name="SubSection" type="tProjectDocumentSubSection" minOccurs="0" maxOccurs="unbounded">
+                    <xs:annotation>
+                        <xs:documentation>Подраздел</xs:documentation>
+                    </xs:annotation>
+                </xs:element>
+            </xs:choice>
+        </xs:sequence>
+    </xs:complexType>
+    
+    <xs:complexType name="tProjectDocumentSubSection">
+        <xs:annotation>
+            <xs:documentation>Документы и подразделы, в составе подраздела раздела проектной документации</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:choice minOccurs="1" maxOccurs="unbounded">
+            <xs:element name="Document" type="tProjectDocument" minOccurs="0" maxOccurs="unbounded">
+                <xs:annotation>
+                    <xs:documentation>Документ</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="SubSection" type="tProjectDocumentSubSection" minOccurs="0" maxOccurs="unbounded">
+                <xs:annotation>
+                    <xs:documentation>Подраздел</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            </xs:choice>
+        </xs:sequence>
+        <xs:attribute name="Name" type="non-empty-string" use="required">
+            <xs:annotation>
+                <xs:documentation>Наименование подраздела</xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+    </xs:complexType>
+    
+    <xs:complexType name="tNonLinearProjectDocumentContent">
+        <xs:annotation>
+            <xs:documentation>Состав проектной документации нелинейного объекта капитального строительства</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="Section2" type="tProjectDocumentSection" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Раздел 2. «Схема планировочной организации земельного участка»</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Section3" type="tProjectDocumentSection" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Раздел 3. «Архитектурные решения»</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Section4" type="tProjectDocumentSection" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Раздел 4. «Конструктивные и объемно-планировочные решения»</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Section5" type="tSection5" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Раздел 5. "Сведения об инженерном оборудовании, о сетях инженерно-технического обеспечения, перечень инженерно-технических мероприятий, содержание технологических решений"</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Section6" type="tProjectDocumentSection" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Раздел 6. «Проект организации строительства»</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Section7" type="tProjectDocumentSection" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Раздел 7. «Проект организации работ по сносу или демонтажу объектов капитального строительства»</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Section8" type="tProjectDocumentSection" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Раздел 8. «Перечень мероприятий по охране окружающей среды»</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Section9" type="tProjectDocumentSection" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Раздел 9. «Мероприятия по обеспечению пожарной безопасности»</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Section10" type="tProjectDocumentSection" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Раздел 10. «Мероприятия по обеспечению доступа инвалидов»</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Section10-1" type="tProjectDocumentSection" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Раздел 10.1. «Мероприятия по обеспечению соблюдения требований энергетической эффективности и требований оснащенности зданий, строений и сооружений приборами учета используемых энергетических ресурсов»</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Section11" type="tProjectDocumentSection" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Раздел 11. «Смета на строительство объектов капитального строительства»</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Section12" type="tProjectDocumentSection" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Раздел 12. «Иная документация в случаях, предусмотренных федеральными законами»</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    
+    
+    <xs:complexType name="tSection5">
+        <xs:annotation>
+            <xs:documentation>Подразделы Раздела 5. "Сведения об инженерном оборудовании, о сетях инженерно-технического обеспечения, перечень инженерно-технических мероприятий, содержание технологических решений" проектной документации нелинейного объекта капитального
+                строительства</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="ElectricitySupply" type="tProjectDocumentSection" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Подраздел «Система электроснабжения»</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="WaterSupply" type="tProjectDocumentSection" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Подраздел «Система водоснабжения»</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="WaterRemoval" type="tProjectDocumentSection" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Подраздел «Система водоотведения»</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="HeatingVentilation" type="tProjectDocumentSection" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Подраздел «Отопление, вентиляция и кондиционирование воздуха, тепловые сети»</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Communication" type="tProjectDocumentSection" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Подраздел «Сети связи»</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="GasSupply" type="tProjectDocumentSection" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Подраздел «Система газоснабжения»</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="TechnologicalSolutions" type="tProjectDocumentSection" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Подраздел «Технологические решения»</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    
+    <xs:complexType name="tLinearProjectDocumentContent">
+        <xs:annotation>
+            <xs:documentation>Состав проектной документации линейного объекта капитального строительства</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="Section2" type="tProjectDocumentSection" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Раздел 2. «Проект полосы отвода»</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Section3" type="tProjectDocumentSection" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Раздел 3. «Технологические и конструктивные решения линейного объекта. Искусственные сооружения»</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Section4" type="tProjectDocumentSection" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Раздел 4. «Здания, строения и сооружения, входящие в инфраструктуру линейного объекта»</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Section5" type="tProjectDocumentSection" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Раздел 5. «Проект организации строительства»</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Section6" type="tProjectDocumentSection" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Раздел 6. «Проект организации работ по сносу (демонтажу) линейного объекта»</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Section7" type="tProjectDocumentSection" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Раздел 7. «Мероприятия по охране окружающей среды»</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Section8" type="tProjectDocumentSection" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Раздел 8. «Мероприятия по обеспечению пожарной безопасности»</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Section9" type="tProjectDocumentSection" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Раздел 9. «Смета на строительство»</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Section10" type="tProjectDocumentSection" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Раздел 10. «Иная документация в случаях, предусмотренных федеральными законами»</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    
+    <xs:complexType name="tObject">
+        <xs:annotation>
+            <xs:documentation>Описание объекта капитального строительства</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="Name" type="non-empty-string" minOccurs="1" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Наименование объекта капитального строительства</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Address" type="tAddress" minOccurs="1" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Адрес объекта капитального строительства (адрес начального пункта для линейного объекта)</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Functions" type="tFunctions" minOccurs="1" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Сведения о функциональном назначении объекта капитального строительства, состав и характеристику производства, номенклатуру выпускаемой продукции (работ, услуг)</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="PowerIndicator" type="tTEI" minOccurs="1" maxOccurs="unbounded">
+                <xs:annotation>
+                    <xs:documentation>Данные о проектной мощности объекта капитального строительства</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="TEI" type="tTEI" minOccurs="0" maxOccurs="unbounded">
+                <xs:annotation>
+                    <xs:documentation>Технико-экономические показатели проектируемого объекта капитального строительства</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="ObjectPart" type="tObjectPart" minOccurs="0" maxOccurs="unbounded">
+                <xs:annotation>
+                    <xs:documentation>Сведения о составных частях объекта, в случае если объект сложный</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:choice minOccurs="1" maxOccurs="1">
+                <xs:element name="NonIndustrialObject" type="tNonIndustrialObject" minOccurs="1" maxOccurs="1">
+                    <xs:annotation>
+                        <xs:documentation>Описание объекта непроизводственного назначения</xs:documentation>
+                    </xs:annotation>
+                </xs:element>
+                <xs:element name="IndustrialObject" type="tIndustrialObject" minOccurs="1" maxOccurs="1">
+                    <xs:annotation>
+                        <xs:documentation>Описание объекта производственного назначения</xs:documentation>
+                    </xs:annotation>
+                </xs:element>
+                <xs:element name="LinearObject" type="tLinearObject" minOccurs="1" maxOccurs="1">
+                    <xs:annotation>
+                        <xs:documentation>Описание линейного объект</xs:documentation>
+                    </xs:annotation>
+                </xs:element>
+            </xs:choice>
+        </xs:sequence>
+        <xs:attribute name="DangerousAndComplex" type="tDangerousAndComplex" use="optional">
+            <xs:annotation>
+                <xs:documentation>Сведения об отнесении объекта к особо опасным и технически сложным объектам (номер подпункта пункта 1 статьи 48.1 Градостроительного кодекса Российской Федерации)</xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="Unique" type="tUnique" use="optional">
+            <xs:annotation>
+                <xs:documentation>Сведения об отнесении объекта к уникальным объектам (номер подпункта пункта 2 статьи 48.1 Градостроительного кодекса Российской Федерации)</xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="Placement" type="tPlacement" use="required">
+            <xs:annotation>
+                <xs:documentation>Сведения о месте расположения объекта капитального строительства</xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+    </xs:complexType>
+    
+    
+    <xs:complexType name="tNonIndustrialObject">
+        <xs:annotation>
+            <xs:documentation>Описание нелинейного непроизводственного объекта</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="Resources" type="tResources" minOccurs="1" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Сведения о потребности объекта капитального строительства в топливе, газе, воде и электрической энергии</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="RenewableSourceInfo" type="tTextBlock" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Сведения об использовании возобновляемых источников энергии и вторичных энергетических ресурсов</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="ImportanceNote" type="tTextBlock" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Сведения о значимости объекта капитального строительства для поселений (муниципального образования) и другие данные, характеризующие объект капитального строительства</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="StaffNote" type="tTextBlock" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Сведения о численности работников и их профессионально-квалификационном составе, числе рабочих мест (кроме жилых зданий)</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="ProjectDocumentation" type="tNonLinearProjectDocumentContent" minOccurs="1" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Сведения о составе проектной документации</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    
+    <xs:complexType name="tIndustrialObject">
+        <xs:annotation>
+            <xs:documentation>Описание нелинейного производственного объекта</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="Resources" type="tResources" minOccurs="1" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Сведения о потребности объекта капитального строительства в топливе, газе, воде и электрической энергии</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="RawResources" type="tResources" minOccurs="1" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Сведения о потребности объекта капитального строительства в топливе, газе, воде и электрической энергии</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="ResourceUseInfo" type="tTextBlock" minOccurs="1" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Сведения об использовании возобновляемых источников энергии и вторичных энергетических ресурсов</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="RenewableSourceInfo" type="tTextBlock" minOccurs="1" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Сведения об использовании возобновляемых источников энергии и вторичных энергетических ресурсов</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="ProjectDocumentation" type="tNonLinearProjectDocumentContent" minOccurs="1" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Сведения о составе проектной документации</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    
+    <xs:complexType name="tLinearObject">
+        <xs:annotation>
+            <xs:documentation>Описание линейного объекта</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="FinishAddress" type="tAddress" minOccurs="1" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Адрес конечного пункта линейного объекта</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="ClimateConditions" type="tClimateConditions" minOccurs="1" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Сведения о климатической, географической и инженерно-геологической характеристике района, на территории которого предполагается осуществлять строительство линейного объекта</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Routes" type="tRoutes" minOccurs="1" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Описание вариантов маршрутов прохождения линейного объекта по территории района строительства, обоснование выбранного варианта трассы</xs:documentation>
+                </xs:annotation>
+                <xs:key name="RoutesNameKey">
+                    <xs:selector xpath="Route"/>
+                    <xs:field xpath="Name"/>
+                </xs:key>
+            </xs:element>
+            <xs:element name="ObjectNote" type="tTextBlock" minOccurs="1" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Cведения о линейном объекте</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="ProjectDocumentation" type="tLinearProjectDocumentContent" minOccurs="1" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Сведения о составе проектной документации</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="tLandInfo">
+        <xs:annotation>
+            <xs:documentation>Сведения о земельных участках</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="CommonLandInfo" type="tTextBlock" minOccurs="1" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Общие сведения о земельных участках, изымаемых для государственных или муниципальных нужд, о земельных участках, в отношении которых устанавливается сервитут, публичный сервитут, обоснование их размеров, если такие размеры не установлены нормами отвода земель
+                        для конкретных видов деятельности, или правилами землепользования и застройки, или проектами планировки, проектами межевания территории, - при необходимости изъятия земельного участка для государственных или муниципальных нужд, установления сервитута, публичного
+                        сервитута</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="LandAreaInfo" type="tLandAreaInfo" minOccurs="0" maxOccurs="unbounded">
+                <xs:annotation>
+                    <xs:documentation>Описание земельного участка</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="tLandAreaInfo">
+        <xs:annotation>
+            <xs:documentation>Описание земельного участка</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="CadastralNumber" type="tCadastralNumber" minOccurs="1" maxOccurs="1"> 
+                <xs:annotation>
+                    <xs:documentation>Кадастровый номер участка</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="LandCategory" type="tLandCategory" minOccurs="1" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Категория земель </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="UsingNote" type="non-empty-string" minOccurs="1" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Обоснования действия с земельным участком (изъятие, установление сервитута), дополнительные сведения об участке. </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="tSoftwareUsed">
+        <xs:annotation>
+            <xs:documentation>Описание используемых программных продуктов</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="SoftwareNote" type="tTextBlock" minOccurs="1" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Общие сведения об используемых программных продуктах</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Software" type="tSoftware" minOccurs="0" maxOccurs="unbounded">
+                <xs:annotation>
+                    <xs:documentation>Описание программного продукта</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="tSoftware">
+        <xs:annotation>
+            <xs:documentation>Описание используемого программныого продукта</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="Name" type="non-empty-string" minOccurs="1" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Наименование программного продукта</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Version" type="non-empty-string" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Версия программного продукта</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="UsingNote" type="non-empty-string" minOccurs="1" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Сведения при подготовки какой части проектной документации использовался программный продукт</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+
+
+    <xs:complexType name="tStagesInfo">
+        <xs:annotation>
+            <xs:documentation>Общие сведения об: - для нелинейного объекта обоснование возможности осуществления строительства объекта капитального строительства по этапам строительства с выделением этих этапов (при необходимости) - для линейного объекта: описание принципиальных проектных решений,
+                обеспечивающих надежность линейного объекта, последовательность его строительства, намечаемые этапы строительства и планируемые сроки ввода их в эксплуатацию </xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="ReasonNote" type="tTextBlock" minOccurs="1" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Общие сведения </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Stage" type="tStage" minOccurs="0" maxOccurs="unbounded">
+                <xs:annotation>
+                    <xs:documentation>Описание этапа строительства, реконструкции</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="tStage">
+        <xs:annotation>
+            <xs:documentation>Описание этапа строительства, реконструкции</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="Number" type="non-empty-string" minOccurs="1" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Номер или наименование этапа</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="BeginDate" type="xs:date" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Дата начала этапа</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="EndDate" type="xs:date" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Дата окончания этапа</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="OperationDate" type="xs:date" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Дата ввода в эксплуатацию (при наличии)</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Note" type="tTextBlock" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Дополнительные сведения об этапе</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="tFunctions">
+        <xs:annotation>
+            <xs:documentation>Функциональное назначение объекта капитального строительства и сведения о составе, характеристики и номенклатуре выпускаемой продукции</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:choice>
+                <xs:element name="FunctionsNote" type="non-empty-string" minOccurs="1" maxOccurs="1">
+                    <xs:annotation>
+                        <xs:documentation>Функциональное назначение объекта капитального строительства</xs:documentation>
+                    </xs:annotation>
+                </xs:element>
+                <xs:element name="FunctionsClass" type="tFunctionsClass" minOccurs="1" maxOccurs="1">
+                    <xs:annotation>
+                        <xs:documentation>Функциональное назначение объекта капитального строительства (код по классификатору)</xs:documentation>
+                    </xs:annotation>
+                </xs:element>
+            </xs:choice>
+            <xs:element name="ProductsNote" type="tTextBlock" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Общие сведения о составе и характеристике производства, номенклатуре продукции</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+
+
+    <xs:complexType name="tTEI">
+        <xs:annotation>
+            <xs:documentation>Технико-экономический показатель (показатель мощности) и его значение</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="Name" type="string500" minOccurs="1" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Наименование показателя</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Measure" type="string100" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Единица измерения показателя</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Value" type="string500" minOccurs="1" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Значение показателя</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="tObjectPart">
+        <xs:annotation>
+            <xs:documentation>Описание объекта (части объекта)</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="Name" type="string1000" minOccurs="1" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Наименование объекта капитального строительства, входящего в состав сложного объекта</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Address" type="tAddress" minOccurs="1" maxOccurs="unbounded">
+                <xs:annotation>
+                    <xs:documentation>Почтовый (строительный) адрес (местоположение) объекта капитального строительства</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:choice minOccurs="1" maxOccurs="1">
+                <xs:element name="FunctionsNote" type="string1000">
+                    <xs:annotation>
+                        <xs:documentation>Функциональное назначение объекта капитального строительства</xs:documentation>
+                    </xs:annotation>
+                </xs:element>
+                <xs:element name="FunctionsClass" type="tFunctionsClassFull">
+                    <xs:annotation>
+                        <xs:documentation>Код классификатора функционального назначения объектов капитального строительства</xs:documentation>
+                    </xs:annotation>
+                </xs:element>
+            </xs:choice>
+            <xs:element name="PowerIndicator" type="tTEI" minOccurs="0" maxOccurs="unbounded">
+                <xs:annotation>
+                    <xs:documentation>Данные о проектной мощности объекта капитального строительства</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="TEI" type="tTEI" minOccurs="0" maxOccurs="unbounded">
+                <xs:annotation>
+                    <xs:documentation>Технико-экономические показатели объекта капитального строительства</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="tResources">
+        <xs:annotation>
+            <xs:documentation>Сведения о необходимых ресурсах, сырьевой базе</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="Note" type="tTextBlock" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Общие сведения о необходимых ресурсах, сырьевой базе</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Resource" type="tResource" minOccurs="0" maxOccurs="unbounded">
+                <xs:annotation>
+                    <xs:documentation>Сведения о необходимом ресурсе (сырье)</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="tResource">
+        <xs:annotation>
+            <xs:documentation>Описание продукта или услуги</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="Name" type="non-empty-string" minOccurs="1" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Наименование необходимого ресурса</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Measure" type="non-empty-string" minOccurs="1" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Единица измерения</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Value" type="non-empty-string" minOccurs="1" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Необходимый объем ресурса</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+
+  
+    <xs:complexType name="tClimateConditions">
+        <xs:annotation>
+            <xs:documentation>Сведения о климатической, географической и инженерно-геологической характеристике района, на территории которого предполагается осуществлять строительство линейного объекта</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="ClimateNote" type="tTextBlock" minOccurs="1" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Наименование структурного подразделения</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="ClimateDistrict" type="tClimateDistrict" minOccurs="1" maxOccurs="unbounded">
+                <xs:annotation>
+                    <xs:documentation>Климатический район, подрайон</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="GeologicalConditions" type="tGeologicalConditions" minOccurs="1" maxOccurs="unbounded">
+                <xs:annotation>
+                    <xs:documentation>Категория сложности инженерно-геологических(геокриологических) условий</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="WindDistrict" type="tWindDistrict" minOccurs="1" maxOccurs="unbounded">
+                <xs:annotation>
+                    <xs:documentation>Ветровой район</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="SnowDistrict" type="tSnowDistrict" minOccurs="1" maxOccurs="unbounded">
+                <xs:annotation>
+                    <xs:documentation>Снеговой район</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="SeismicActivity" type="tSeismicActivity" minOccurs="1" maxOccurs="unbounded">
+                <xs:annotation>
+                    <xs:documentation>Интенсивность сейсмических воздействий</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="tRoutes">
+        <xs:annotation>
+            <xs:documentation>Описание вариантов маршрутов прохождения линейного объекта по территории района строительства, обоснование выбранного варианта трассы</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="RoutesNote" type="tTextBlock" minOccurs="1" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Описание вариантов маршрутов прохождения линейного объекта по территории района строительства, обоснование выбранного варианта трассы</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Route" type="tRoute" minOccurs="0" maxOccurs="unbounded">
+                <xs:annotation>
+                    <xs:documentation>Описание варианта маршрута прохождения линейного объекта по территории района строительства</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="tRoute">
+        <xs:annotation>
+            <xs:documentation>Описание варианта маршрута прохождения линейного объекта по территории района строительства</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="Name" type="non-empty-string" minOccurs="1" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Наименование или идентификатор варианта маршрута</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Note" type="tTextBlock" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Описание варианта маршрута прохождения линейного объекта по территории района строительства</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="tDesignerAssurance">
+        <xs:annotation>
+            <xs:documentation>Заверение проектной организации о том, что проектная документация разработана в соответствии с градостроительным планом земельного участка, заданием на проектирование, градостроительным регламентом, документами об использовании земельного участка для строительства (в
+                случае если на земельный участок не распространяется действие градостроительного регламента или в отношении его не устанавливается градостроительный регламент), техническими регламентами, в том числе устанавливающими требования по обеспечению безопасной эксплуатации зданий, строений,
+                сооружений и безопасного использования прилегающих к ним территорий, и с соблюдением технических условий</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="Assurance" type="tTextBlock" minOccurs="1" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Текст заверения проектной организации о том, что проектная документация разработана в соответствии с градостроительным планом земельного участка, заданием на проектирование, градостроительным регламентом, документами об использовании земельного участка для
+                        строительства (в случае если на земельный участок не распространяется действие градостроительного регламента или в отношении его не устанавливается градостроительный регламент), техническими регламентами, в том числе устанавливающими требования по обеспечению безопасной
+                        эксплуатации зданий, строений, сооружений и безопасного использования прилегающих к ним территорий, и с соблюдением технических условий</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Signer" type="tWorkPerson" minOccurs="1" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Лицо подписавшее заверение</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="tExplanatoryNoteModifications">
+        <xs:annotation>
+            <xs:documentation>Сведения о внесении изменений в проектную документацию</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="Modification" type="tModification" minOccurs="1" maxOccurs="unbounded">
+                <xs:annotation>
+                    <xs:documentation>Сведения о внесении изменения в проектную документацию</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="tModification">
+        <xs:annotation>
+            <xs:documentation>Сведения о внесении изменениz в пояснительную записку</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="ModificationNumber" type="xs:integer">
+                <xs:annotation>
+                    <xs:documentation>Номер изменения</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="ModificationDate" type="xs:date">
+                <xs:annotation>
+                    <xs:documentation>Дата изменения</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="tTextBlock">
+        <xs:choice maxOccurs="unbounded">
+            <xs:element name="SubTitle" type="non-empty-string" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element name="Text" type="non-empty-string" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element name="Image" type="tImage" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element name="Table" type="tTable" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:choice>
+        <xs:attribute name="Title" type="non-empty-string" use="optional"/>
+    </xs:complexType>
+
+    <xs:complexType name="tTable">
+        <xs:sequence>
+            <xs:element name="TitleRow" type="tRow" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element name="Row" type="tRow" minOccurs="1" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="tRow">
+        <xs:sequence>
+            <xs:element name="Cell" type="tCell" minOccurs="1" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="tCell">
+        <xs:simpleContent>
+            <xs:extension base="xs:string">
+                <xs:attribute name="align" type="tAlignTypes" use="optional"/>  
+            </xs:extension>
+        </xs:simpleContent>
+    </xs:complexType>
+
+
+    <xs:complexType name="tImage">
+        <xs:sequence>
+            <xs:element name="ImageData" type="xs:base64Binary" minOccurs="1" maxOccurs="1"/>
+            <xs:element name="Comment" type="non-empty-string" minOccurs="0" maxOccurs="1"/>
+        </xs:sequence>
+        <xs:attribute name="Type" type="tImageTypes" use="required"/>
+    </xs:complexType>
+
+
+    <!-- Описание простых типов -->
+
+    <xs:simpleType name="tSchemaVersion">
+        <xs:annotation>
+            <xs:documentation>Номер версии, использованной при формировании пояснительной записки в формате xx.xx</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:pattern value="([0-9]){2}\.([0-9]){2}"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="string50">
+        <xs:annotation>
+            <xs:documentation>Текстовая строка длиной 50 символа</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:normalizedString">
+            <xs:maxLength value="50"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="string100">
+        <xs:annotation>
+            <xs:documentation>Текстовая строка длиной 100 символа</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:normalizedString">
+            <xs:maxLength value="100"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="string200">
+        <xs:annotation>
+            <xs:documentation>Текстовая строка длиной 200 символа</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:normalizedString">
+            <xs:maxLength value="200"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="string500">
+        <xs:annotation>
+            <xs:documentation>Текстовая строка длиной 500 символа</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:normalizedString">
+            <xs:maxLength value="500"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="string1000">
+        <xs:annotation>
+            <xs:documentation>Текстовая строка длиной 1000 символа</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:normalizedString">
+            <xs:maxLength value="1000"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="tCadastralNumber">
+        <xs:annotation>
+            <xs:documentation>Кадастровый номер участка</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:pattern value="\d+:\d+:\d+:\d+"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="tFileName">
+        <xs:annotation>
+            <xs:documentation>Текстовая строка длиной до 255 символов - имя файла</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:normalizedString">
+            <xs:maxLength value="255"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="tEmail">
+        <xs:annotation>
+            <xs:documentation>Текстовая строка - адрес электронной почты</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:normalizedString">
+            <xs:pattern value="[a-zA-Zа-яА-Я0-9_.\-]{1,}[@]{1}[a-zA-Zа-яА-Я0-9_.\-]{1,}[.]{1}[a-zA-Zа-яА-Я]{2,}"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="tFunctionsClass">
+        <xs:annotation>
+            <xs:documentation>Код классификатора функционального назначения объектов капитального строительства</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:pattern value="([0-9]{1,2}\.[0-9]{1,2}\.[0-9]{1,3}\.[0-9]{1,3})|([0-9]{1,2}\.[0-9]{1,2}\.[0-9]{1,3})"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="tFunctionsClassFull">
+        <xs:annotation>
+            <xs:documentation>Код классификатора функционального назначения объектов капитального строительства</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:pattern value="[0-9]{1,2}\.[0-9]{1,2}\.[0-9]{1,3}\.[0-9]{1,3}"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="tOrgOGRN">
+        <xs:annotation>
+            <xs:documentation>ОГРН организации</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:normalizedString">
+            <xs:length value="13"/>
+            <xs:pattern value="\d{13}"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="tOrgINN">
+        <xs:annotation>
+            <xs:documentation>ИНН организации</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:normalizedString">
+            <xs:length value="10"/>
+            <xs:pattern value="\d{10}"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="tOrgKPP">
+        <xs:annotation>
+            <xs:documentation>КПП организации</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:normalizedString">
+            <xs:length value="9"/>
+            <xs:pattern value="\d{9}"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="tOGRNIP">
+        <xs:annotation>
+            <xs:documentation>ОГРНИП</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:normalizedString">
+            <xs:length value="15"/>
+            <xs:pattern value="\d{15}"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="tSNILS">
+        <xs:annotation>
+            <xs:documentation>СНИЛС</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:normalizedString">
+            <xs:pattern value="[0-9]{3}-[0-9]{3}-[0-9]{3} [0-9]{2}"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="tPostIndex">
+        <xs:annotation>
+            <xs:documentation>Почтовый индекс</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:normalizedString">
+            <xs:length value="6"/>
+            <xs:pattern value="\d{6}"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="tFileFormat">
+        <xs:annotation>
+            <xs:documentation>Текстовая строка длиной 4 символа</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:maxLength value="4"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="tFileChecksum">
+        <xs:annotation>
+            <xs:documentation>Текстовая строка длиной 8 символов</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:pattern value="[0-9a-fA-F]{8}"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="tYesNo">
+        <xs:annotation>
+            <xs:documentation>Непустая текстовая строка, содержащая одно из значений "да" или "нет"</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="да">
+                <xs:annotation>
+                    <xs:documentation>Логическое значение "да"/"истина"</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="нет">
+                <xs:annotation>
+                    <xs:documentation>Логическое значение "нет"/"ложь"</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+        </xs:restriction>
+    </xs:simpleType>
+    
+    <xs:simpleType name="tYear">
+        <xs:annotation>
+            <xs:documentation>Год</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:integer">
+            <xs:minInclusive value="2021"/>
+            <xs:maxInclusive value="9999"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="non-empty-string">
+        <xs:annotation>
+            <xs:documentation>Непустая текстовая строка</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:pattern value="(\s*[^\s]\s*)+"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="tImageTypes">
+        <xs:annotation>
+            <xs:documentation>Типы изображений</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="jpg"/>
+            <xs:enumeration value="gif"/>
+            <xs:enumeration value="png"/>
+            <xs:enumeration value="jpeg"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="tAlignTypes">
+        <xs:annotation>
+            <xs:documentation>Варианты выравнивания текста</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="left"/>
+            <xs:enumeration value="right"/>
+            <xs:enumeration value="center"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="tRegionsRF">
+        <xs:annotation>
+            <xs:documentation>Коды субъектов Российской Федерации</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="00">
+                <xs:annotation>
+                    <xs:documentation>Объект расположен за пределами территории Российской Федерации, во внутренних морских водах, территориальном море и прилежащей зоне Российской Федерации, в исключительной экономической зоне Российской Федерации, в границах российской части (российском секторе)
+                        дна Каспийского моря и континентального шельфа Российской Федерации</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="01">
+                <xs:annotation>
+                    <xs:documentation>Республика Адыгея (Адыгея)</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="02">
+                <xs:annotation>
+                    <xs:documentation>Республика Башкортостан</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="03">
+                <xs:annotation>
+                    <xs:documentation>Республика Бурятия</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="04">
+                <xs:annotation>
+                    <xs:documentation>Республика Алтай</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="05">
+                <xs:annotation>
+                    <xs:documentation>Республика Дагестан</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="06">
+                <xs:annotation>
+                    <xs:documentation>Республика Ингушетия</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="07">
+                <xs:annotation>
+                    <xs:documentation>Кабардино-Балкарская Республика</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="08">
+                <xs:annotation>
+                    <xs:documentation>Республика Калмыкия</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="09">
+                <xs:annotation>
+                    <xs:documentation>Карачаево-Черкесская Республика</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="10">
+                <xs:annotation>
+                    <xs:documentation>Республика Карелия</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="11">
+                <xs:annotation>
+                    <xs:documentation>Республика Коми</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="12">
+                <xs:annotation>
+                    <xs:documentation>Республика Марий Эл</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="13">
+                <xs:annotation>
+                    <xs:documentation>Республика Мордовия</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="14">
+                <xs:annotation>
+                    <xs:documentation>Республика Саха (Якутия)</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="15">
+                <xs:annotation>
+                    <xs:documentation>Республика Северная Осетия-Алания</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="16">
+                <xs:annotation>
+                    <xs:documentation>Республика Татарстан (Татарстан)</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="17">
+                <xs:annotation>
+                    <xs:documentation>Республика Тыва</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="18">
+                <xs:annotation>
+                    <xs:documentation>Удмуртская Республика</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="19">
+                <xs:annotation>
+                    <xs:documentation>Республика Хакасия</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="20">
+                <xs:annotation>
+                    <xs:documentation>Чеченская Республика</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="21">
+                <xs:annotation>
+                    <xs:documentation>Чувашская Республика-Чувашия</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="22">
+                <xs:annotation>
+                    <xs:documentation>Алтайский край</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="23">
+                <xs:annotation>
+                    <xs:documentation>Краснодарский край</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="24">
+                <xs:annotation>
+                    <xs:documentation>Красноярский край</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="25">
+                <xs:annotation>
+                    <xs:documentation>Приморский край</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="26">
+                <xs:annotation>
+                    <xs:documentation>Ставропольский край</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="27">
+                <xs:annotation>
+                    <xs:documentation>Хабаровский край</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="28">
+                <xs:annotation>
+                    <xs:documentation>Амурская область</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="29">
+                <xs:annotation>
+                    <xs:documentation>Архангельская область</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="30">
+                <xs:annotation>
+                    <xs:documentation>Астраханская область</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="31">
+                <xs:annotation>
+                    <xs:documentation>Белгородская область</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="32">
+                <xs:annotation>
+                    <xs:documentation>Брянская область</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="33">
+                <xs:annotation>
+                    <xs:documentation>Владимирская область</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="34">
+                <xs:annotation>
+                    <xs:documentation>Волгоградская область</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="35">
+                <xs:annotation>
+                    <xs:documentation>Вологодская область</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="36">
+                <xs:annotation>
+                    <xs:documentation>Воронежская область</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="37">
+                <xs:annotation>
+                    <xs:documentation>Ивановская область</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="38">
+                <xs:annotation>
+                    <xs:documentation>Иркутская область</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="39">
+                <xs:annotation>
+                    <xs:documentation>Калининградская область</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="40">
+                <xs:annotation>
+                    <xs:documentation>Калужская область</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="41">
+                <xs:annotation>
+                    <xs:documentation>Камчатский край</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="42">
+                <xs:annotation>
+                    <xs:documentation>Кемеровская область - Кузбасс</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="43">
+                <xs:annotation>
+                    <xs:documentation>Кировская область</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="44">
+                <xs:annotation>
+                    <xs:documentation>Костромская область</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="45">
+                <xs:annotation>
+                    <xs:documentation>Курганская область</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="46">
+                <xs:annotation>
+                    <xs:documentation>Курская область</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="47">
+                <xs:annotation>
+                    <xs:documentation>Ленинградская область</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="48">
+                <xs:annotation>
+                    <xs:documentation>Липецкая область</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="49">
+                <xs:annotation>
+                    <xs:documentation>Магаданская область</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="50">
+                <xs:annotation>
+                    <xs:documentation>Московская область</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="51">
+                <xs:annotation>
+                    <xs:documentation>Мурманская область</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="52">
+                <xs:annotation>
+                    <xs:documentation>Нижегородская область</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="53">
+                <xs:annotation>
+                    <xs:documentation>Новгородская область</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="54">
+                <xs:annotation>
+                    <xs:documentation>Новосибирская область</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="55">
+                <xs:annotation>
+                    <xs:documentation>Омская область</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="56">
+                <xs:annotation>
+                    <xs:documentation>Оренбургская область</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="57">
+                <xs:annotation>
+                    <xs:documentation>Орловская область</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="58">
+                <xs:annotation>
+                    <xs:documentation>Пензенская область</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="59">
+                <xs:annotation>
+                    <xs:documentation>Пермский край</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="60">
+                <xs:annotation>
+                    <xs:documentation>Псковская область</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="61">
+                <xs:annotation>
+                    <xs:documentation>Ростовская область</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="62">
+                <xs:annotation>
+                    <xs:documentation>Рязанская область</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="63">
+                <xs:annotation>
+                    <xs:documentation>Самарская область</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="64">
+                <xs:annotation>
+                    <xs:documentation>Саратовская область</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="65">
+                <xs:annotation>
+                    <xs:documentation>Сахалинская область</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="66">
+                <xs:annotation>
+                    <xs:documentation>Свердловская область</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="67">
+                <xs:annotation>
+                    <xs:documentation>Смоленская область</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="68">
+                <xs:annotation>
+                    <xs:documentation>Тамбовская область</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="69">
+                <xs:annotation>
+                    <xs:documentation>Тверская область</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="70">
+                <xs:annotation>
+                    <xs:documentation>Томская область</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="71">
+                <xs:annotation>
+                    <xs:documentation>Тульская область</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="72">
+                <xs:annotation>
+                    <xs:documentation>Тюменская область</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="73">
+                <xs:annotation>
+                    <xs:documentation>Ульяновская область</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="74">
+                <xs:annotation>
+                    <xs:documentation>Челябинская область</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="75">
+                <xs:annotation>
+                    <xs:documentation>Забайкальский край</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="76">
+                <xs:annotation>
+                    <xs:documentation>Ярославская область</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="77">
+                <xs:annotation>
+                    <xs:documentation>Москва</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="78">
+                <xs:annotation>
+                    <xs:documentation>Санкт-Петербург</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="79">
+                <xs:annotation>
+                    <xs:documentation>Еврейская автономная область</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="83">
+                <xs:annotation>
+                    <xs:documentation>Ненецкий автономный округ</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="86">
+                <xs:annotation>
+                    <xs:documentation>Ханты-Мансийский автономный округ - Югра</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="87">
+                <xs:annotation>
+                    <xs:documentation>Чукотский автономный округ</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="89">
+                <xs:annotation>
+                    <xs:documentation>Ямало-Ненецкий автономный округ</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="91">
+                <xs:annotation>
+                    <xs:documentation>Республика Крым</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="92">
+                <xs:annotation>
+                    <xs:documentation>Севастополь</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="tDocumentType">
+        <xs:annotation>
+            <xs:documentation>Вид документа</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="01.01">
+                <xs:annotation>
+                    <xs:documentation>Документы-основания проведения экспертизы. Заявление на проведение экспертизы.</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="01.02">
+                <xs:annotation>
+                    <xs:documentation>Документы-основания проведения экспертизы. Договор на проведение экспертизы. </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="01.03">
+                <xs:annotation>
+                    <xs:documentation>Документы-основания проведения экспертизы. Документ, подтверждающий полномочия заявителя действовать от имени застройщика, технического заказчика. </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="01.99">
+                <xs:annotation>
+                    <xs:documentation>Документы-основания проведения экспертизы. Иные документы.</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="02.01">
+                <xs:annotation>
+                    <xs:documentation>Заключение экспертизы. Подготовленное ранее в отношении этого же объекта.</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="02.02">
+                <xs:annotation>
+                    <xs:documentation>Заключение экспертизы. Заключение по результатам оценки соответствия в рамках экспертного сопровождения</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="02.04">
+                <xs:annotation>
+                    <xs:documentation>Заключение экспертизы. Заключение экологической экспертизы.</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="02.05">
+                <xs:annotation>
+                    <xs:documentation>Заключение экспертизы. Заключение государственной историко-культурной экспертизы.</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="02.06">
+                <xs:annotation>
+                    <xs:documentation>Заключение экспертизы. Сводное заключение о проведении публичного технологического аудита крупного инвестиционного проекта с государственным участием.</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="02.07">
+                <xs:annotation>
+                    <xs:documentation>Заключение экспертизы. Заключение технологического и ценового аудита обоснования инвестиций.</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="02.99">
+                <xs:annotation>
+                    <xs:documentation>Заключение экспертизы. Иные заключения.</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="03.01">
+                <xs:annotation>
+                    <xs:documentation>Документы размещения объекта строительства. Документ территориального планирования. </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="03.02">
+                <xs:annotation>
+                    <xs:documentation>Документы размещения объекта строительства. Градостроительный план земельного участка. </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="03.03">
+                <xs:annotation>
+                    <xs:documentation>Документы размещения объекта строительства. Проект планировки территории. </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="03.04">
+                <xs:annotation>
+                    <xs:documentation>Документы размещения объекта строительства. Проект межевания территории. </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="03.99">
+                <xs:annotation>
+                    <xs:documentation>Документы размещения объекта строительства. Иные документы. </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="04.01">
+                <xs:annotation>
+                    <xs:documentation>Документы подключения объекта строительства к инженерным сетям. Технические условия на подключение объекта капитального строительства к сетям инженерно-технического обеспечения.</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="04.02">
+                <xs:annotation>
+                    <xs:documentation>Документы подключения объекта строительства к инженерным сетям. Документ о согласовании отступлений от положений технических условий подключения объекта капитального строительства к сетям инженерно-технического обеспечения.</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="04.99">
+                <xs:annotation>
+                    <xs:documentation>Документы подключения объекта строительства к инженерным сетям. Иные документы. </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="05.01">
+                <xs:annotation>
+                    <xs:documentation>Задания и программы. Задание на проведение инженерных изысканий.</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="05.02">
+                <xs:annotation>
+                    <xs:documentation>Задания и программы. Программа инженерных изысканий.</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="05.03">
+                <xs:annotation>
+                    <xs:documentation>Задания и программы. Задание на проектирование.</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="05.99">
+                <xs:annotation>
+                    <xs:documentation>Задания и программы. Иные задания.</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="06.01">
+                <xs:annotation>
+                    <xs:documentation>Результаты инженерных изысканий. Инженерно-геодезические изыскания.</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="06.02">
+                <xs:annotation>
+                    <xs:documentation>Результаты инженерных изысканий. Инженерно-геологические изыскания.</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="06.03">
+                <xs:annotation>
+                    <xs:documentation>Результаты инженерных изысканий. Инженерно-гидрометеорологические изыскания.</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="06.04">
+                <xs:annotation>
+                    <xs:documentation>Результаты инженерных изысканий. Инженерно-экологические изыскания.</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="06.05">
+                <xs:annotation>
+                    <xs:documentation>Результаты инженерных изысканий. Инженерно-геотехнические изыскания.</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="06.06">
+                <xs:annotation>
+                    <xs:documentation>Результаты инженерных изысканий. Геотехнические исследования.</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="06.07">
+                <xs:annotation>
+                    <xs:documentation>Результаты инженерных изысканий. Обследования состояния грунтов оснований зданий и сооружений, их строительных конструкций.</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="06.08">
+                <xs:annotation>
+                    <xs:documentation>Результаты инженерных изысканий. Поиск и разведка подземных вод для целей водоснабжения.</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="06.09">
+                <xs:annotation>
+                    <xs:documentation>Результаты инженерных изысканий. Локальный мониторинг компонентов окружающей среды.</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="06.10">
+                <xs:annotation>
+                    <xs:documentation>Результаты инженерных изысканий. Разведка грунтовых строительных материалов.</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="06.11">
+                <xs:annotation>
+                    <xs:documentation>Результаты инженерных изысканий. Локальные обследования загрязнения грунтов и грунтовых вод.</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="06.99">
+                <xs:annotation>
+                    <xs:documentation>Результаты инженерных изысканий. Иной документ.</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="07.01">
+                <xs:annotation>
+                    <xs:documentation>Проектная документация. Раздел 1. «Пояснительная записка».</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="07.02">
+                <xs:annotation>
+                    <xs:documentation>Проектная документация. Раздел 2. «Схема планировочной организации земельного участка».</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="07.03">
+                <xs:annotation>
+                    <xs:documentation>Проектная документация. Раздел 3. «Архитектурные решения».</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="07.04">
+                <xs:annotation>
+                    <xs:documentation>Проектная документация. Раздел 4. «Конструктивные и объемно-планировочные решения».</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="07.05">
+                <xs:annotation>
+                    <xs:documentation>Проектная документация. Раздел 5. Подраздел «Система электроснабжения».</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="07.06">
+                <xs:annotation>
+                    <xs:documentation>Проектная документация. Раздел 5 Подраздел «Система водоснабжения».</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="07.07">
+                <xs:annotation>
+                    <xs:documentation>Проектная документация. Раздел 5. Подраздел «Система водоотведения».</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="07.08">
+                <xs:annotation>
+                    <xs:documentation>Проектная документация. Раздел 5. Подраздел «Отопление, вентиляция и кондиционирование воздуха, тепловые сети».</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="07.09">
+                <xs:annotation>
+                    <xs:documentation>Проектная документация. Раздел 5. Подраздел «Сети связи».</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="07.10">
+                <xs:annotation>
+                    <xs:documentation>Проектная документация. Раздел 5. Подраздел «Система газоснабжения».</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="07.11">
+                <xs:annotation>
+                    <xs:documentation>Проектная документация. Раздел 5. Подраздел «Технологические решения».</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="07.12">
+                <xs:annotation>
+                    <xs:documentation>Проектная документация. Раздел 6. «Проект организации строительства».</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="07.13">
+                <xs:annotation>
+                    <xs:documentation>Проектная документация. Раздел 7. «Проект организации работ по сносу или демонтажу объектов капитального строительства».</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="07.14">
+                <xs:annotation>
+                    <xs:documentation>Проектная документация. Раздел 8. «Перечень мероприятий по охране окружающей среды».</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="07.15">
+                <xs:annotation>
+                    <xs:documentation>Проектная документация. Раздел 9. «Мероприятия по обеспечению пожарной безопасности».</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="07.16">
+                <xs:annotation>
+                    <xs:documentation>Проектная документация. Раздел 10. «Мероприятия по обеспечению доступа инвалидов».</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="07.17">
+                <xs:annotation>
+                    <xs:documentation>Проектная документация. Раздел 10.1. «Мероприятия по обеспечению соблюдения требований энергетической эффективности и требований оснащенности зданий, строений и сооружений приборами учета используемых энергетических ресурсов».</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="07.18">
+                <xs:annotation>
+                    <xs:documentation>Проектная документация. Раздел 11. «Смета на строительство объектов капитального строительства».</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="07.19">
+                <xs:annotation>
+                    <xs:documentation>Проектная документация. Раздел 12. «Иная документация в случаях, предусмотренных федеральными законами».</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="08.01">
+                <xs:annotation>
+                    <xs:documentation>Проектная документация. Линейный объект. Раздел 1. «Пояснительная записка».</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="08.02">
+                <xs:annotation>
+                    <xs:documentation>Проектная документация. Линейный объект. Раздел 2. «Проект полосы отвода».</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="08.03">
+                <xs:annotation>
+                    <xs:documentation>Проектная документация. Линейный объект. Раздел 3. «Технологические и конструктивные решения линейного объекта. Искусственные сооружения».</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="08.04">
+                <xs:annotation>
+                    <xs:documentation>Проектная документация. Линейный объект. Раздел 4. «Здания, строения и сооружения, входящие в инфраструктуру линейного объекта».</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="08.05">
+                <xs:annotation>
+                    <xs:documentation>Проектная документация. Линейный объект. Раздел 5. «Проект организации строительства».</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="08.06">
+                <xs:annotation>
+                    <xs:documentation>Проектная документация. Линейный объект. Раздел 6. «Проект организации работ по сносу (демонтажу) линейного объекта».</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="08.07">
+                <xs:annotation>
+                    <xs:documentation>Проектная документация. Линейный объект. Раздел 7. «Мероприятия по охране окружающей среды».</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="08.08">
+                <xs:annotation>
+                    <xs:documentation>Проектная документация. Линейный объект. Раздел 8. «Мероприятия по обеспечению пожарной безопасности».</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="08.09">
+                <xs:annotation>
+                    <xs:documentation>Проектная документация. Линейный объект. Раздел 9. «Смета на строительство».</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="08.10">
+                <xs:annotation>
+                    <xs:documentation>Проектная документация. Линейный объект. Раздел 10. «Иная документация в случаях, предусмотренных федеральными законами».</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="09.01">
+                <xs:annotation>
+                    <xs:documentation>Переписка по вопросам проведения экспертизы. Уведомление о выявлении недостатков.</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="09.02">
+                <xs:annotation>
+                    <xs:documentation>Переписка по вопросам проведения экспертизы. Сопроводительное письмо заявителя с откорректированной проектной документацией.</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="09.99">
+                <xs:annotation>
+                    <xs:documentation>Переписка по вопросам проведения экспертизы. Иной документ.</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="10.01">
+                <xs:annotation>
+                    <xs:documentation>Документы о членстве в саморегулируемой организации. Выписка из реестра членов саморегулируемой организации.</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="10.99">
+                <xs:annotation>
+                    <xs:documentation>Документы о членстве в саморегулируемой организации. Иной документ.</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="11.01">
+                <xs:annotation>
+                    <xs:documentation>Документы для проведения проверки достоверности определения сметной стоимости. Ведомость объемов работ.</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="11.02">
+                <xs:annotation>
+                    <xs:documentation>Документы для проведения проверки достоверности определения сметной стоимости. Решение по объекту капитального строительства.</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="11.03">
+                <xs:annotation>
+                    <xs:documentation>Документы для проведения проверки достоверности определения сметной стоимости. Акт, содержащий перечень дефектов оснований, строительных конструкций, систем инженерно-технического обеспечения и сетей инженерно-технического обеспечения.</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="11.04">
+                <xs:annotation>
+                    <xs:documentation>Документы для проведения проверки достоверности определения сметной стоимости. Решение о разработке и применении индивидуальных сметных нормативов.</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="11.99">
+                <xs:annotation>
+                    <xs:documentation>Документы для проведения проверки достоверности определения сметной стоимости. Иной документ.</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="12.01">
+                <xs:annotation>
+                    <xs:documentation>Документы в отношении экономически эффективной проектной документации повторного использования. Положительное заключение экспертизы в отношении экономически эффективной проектной документации повторного использования.</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="12.02">
+                <xs:annotation>
+                    <xs:documentation>Документы в отношении экономически эффективной проектной документации повторного использования. Справка с указанием разделов, которые не подвергались изменению.</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="12.03">
+                <xs:annotation>
+                    <xs:documentation>Документы в отношении экономически эффективной проектной документации повторного использования. Документ, подтверждающий аналогичность.</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="12.99">
+                <xs:annotation>
+                    <xs:documentation>Документы в отношении экономически эффективной проектной документации повторного использования. Иной документ.</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="13.01">
+                <xs:annotation>
+                    <xs:documentation>Документы в отношении работ по сносу объектов капитального строительства. Проект организации работ по сносу объекта капитального строительства.</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="13.02">
+                <xs:annotation>
+                    <xs:documentation>Документы в отношении работ по сносу объектов капитального строительства. Смета на снос объекта капитального строительства.</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="13.03">
+                <xs:annotation>
+                    <xs:documentation>Документы в отношении работ по сносу объектов капитального строительства. Акт (решение) собственника здания (сооружения, строения) о выведении из эксплуатации и ликвидации объекта капитального строительства.</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="13.04">
+                <xs:annotation>
+                    <xs:documentation>Документы в отношении работ по сносу объектов капитального строительства. Решение органа местного самоуправления о признании жилого дома аварийным и подлежащим сносу.</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="13.99">
+                <xs:annotation>
+                    <xs:documentation>Документы в отношении работ по сносу объектов капитального строительства. Иной документ.</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="14.01">
+                <xs:annotation>
+                    <xs:documentation>Программы развития. Федеральная целевая программа.</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="14.02">
+                <xs:annotation>
+                    <xs:documentation>Программы развития. Программа развития субъекта Российской Федерации.</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="14.03">
+                <xs:annotation>
+                    <xs:documentation>Программы развития. Программа развития муниципального образования.</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="14.04">
+                <xs:annotation>
+                    <xs:documentation>Программы развития. Ведомственная целевая программа.</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="14.99">
+                <xs:annotation>
+                    <xs:documentation>Программы развития. Иная программа.</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="15.01">
+                <xs:annotation>
+                    <xs:documentation>Решение о разработке проектной документации. Решение Президента Российской федерации.</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="15.02">
+                <xs:annotation>
+                    <xs:documentation>Решение о разработке проектной документации. Решение Правительства Российской Федерации.</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="15.03">
+                <xs:annotation>
+                    <xs:documentation>Решение о разработке проектной документации. Решение органа федеральной власти.</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="15.04">
+                <xs:annotation>
+                    <xs:documentation>Решение о разработке проектной документации. Решение органа власти субъекта Российской Федерации.</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="15.05">
+                <xs:annotation>
+                    <xs:documentation>Решение о разработке проектной документации. Решение органа местного самоуправления.</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="15.06">
+                <xs:annotation>
+                    <xs:documentation>Решение о разработке проектной документации. Решение застройщика.</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="15.99">
+                <xs:annotation>
+                    <xs:documentation>Решение о разработке проектной документации. Решение иного лица.</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="16.01">
+                <xs:annotation>
+                    <xs:documentation>Международные договоры. Международный договор.</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="16.02">
+                <xs:annotation>
+                    <xs:documentation>Международные договоры. Соглашение о разделе продукции.</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="16.99">
+                <xs:annotation>
+                    <xs:documentation>Международные договоры. Иные договоры.</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="17.01">
+                <xs:annotation>
+                    <xs:documentation>Правоустанавливающие документы. Выписка из Единого государственного реестра недвижимости.</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="17.99">
+                <xs:annotation>
+                    <xs:documentation>Правоустанавливающие документы. Иной правоустанавливающий документ.</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="18.01">
+                <xs:annotation>
+                    <xs:documentation>Документы о безопасности производственных объектов. Обоснование безопасности опасного производственного объекта в случаях, предусмотренных частью 4 статьи 3 Федерального закона "О промышленной безопасности опасных производственных объектов".</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="18.02">
+                <xs:annotation>
+                    <xs:documentation>Документы о безопасности производственных объектов. Положительное заключение экспертизы промышленной безопасности такого обоснования, внесенное в реестр заключений экспертизы промышленной безопасности.</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="18.99">
+                <xs:annotation>
+                    <xs:documentation>Документы о безопасности производственных объектов. Иные документы.</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="19.01">
+                <xs:annotation>
+                    <xs:documentation>Специальные технические условия. Специальные технические условия.</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="19.02">
+                <xs:annotation>
+                    <xs:documentation>Специальные технические условия. Документ о согласовании отступлений от положений специальных технических условий.</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="19.99">
+                <xs:annotation>
+                    <xs:documentation>Специальные технические условия. Иные документы.</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="20.01">
+                <xs:annotation>
+                    <xs:documentation>Разрешения. Разрешение на строительство.</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="20.02">
+                <xs:annotation>
+                    <xs:documentation>Разрешения. Разрешение на ввод объектов в эксплуатацию.</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="20.03">
+                <xs:annotation>
+                    <xs:documentation>Разрешения. Акт освидетельствования проведения основных работ по строительству.</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="20.04">
+                <xs:annotation>
+                    <xs:documentation>Разрешения. Разрешение на условно разрешенный вид использования земельного участка или объекта капитального строительства.</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="20.05">
+                <xs:annotation>
+                    <xs:documentation>Разрешения. Разрешение на отклонение от предельных параметров разрешенного строительства, реконструкции объектов капитального строительства.</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="20.99">
+                <xs:annotation>
+                    <xs:documentation>Разрешения. Иные разрешения.</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="99.01">
+                <xs:annotation>
+                    <xs:documentation>Группа дополнительных документов. Документ, подтверждающий передачу проектной документации и (или) результатов инженерных изысканий застройщику (техническому заказчику).</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="99.02">
+                <xs:annotation>
+                    <xs:documentation>Группа дополнительных документов. Справка с описанием изменений, внесенных в проектную документацию и (или) результаты инженерных изысканий.</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="99.99">
+                <xs:annotation>
+                    <xs:documentation>Группа дополнительных документов. Иной документ.</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="tLandCategory">
+        <xs:annotation>
+            <xs:documentation>Категория земель</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="1">
+                <xs:annotation>
+                    <xs:documentation>Земли сельскохозяйственного назначения</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="2">
+                <xs:annotation>
+                    <xs:documentation>Земли населенных пунктов</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="3">
+                <xs:annotation>
+                    <xs:documentation>Земли промышленности, энергетики, транспорта, связи, радиовещания, телевидения, информатики, земли для обеспечения космической деятельности, земли обороны, безопасности и земли иного специального назначения</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="4">
+                <xs:annotation>
+                    <xs:documentation>Земли особо охраняемых территорий и объектов</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="5">
+                <xs:annotation>
+                    <xs:documentation>Земли лесного фонда</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="6">
+                <xs:annotation>
+                    <xs:documentation>Земли водного фонда</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="7">
+                <xs:annotation>
+                    <xs:documentation>Земли запаса</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="tClimateDistrict">
+        <xs:annotation>
+            <xs:documentation>Климатический район (подрайон)</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="I">
+                <xs:annotation>
+                    <xs:documentation>климатический район I</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="IА">
+                <xs:annotation>
+                    <xs:documentation>климатический подрайон IА</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="IБ">
+                <xs:annotation>
+                    <xs:documentation>климатический подрайон IБ</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="IВ">
+                <xs:annotation>
+                    <xs:documentation>климатический подрайон IВ</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="IГ">
+                <xs:annotation>
+                    <xs:documentation>климатический подрайон IГ</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="IД">
+                <xs:annotation>
+                    <xs:documentation>климатический подрайон IД</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="II">
+                <xs:annotation>
+                    <xs:documentation>климатический район II</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="IIА">
+                <xs:annotation>
+                    <xs:documentation>климатический подрайон IIА</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="IIБ">
+                <xs:annotation>
+                    <xs:documentation>климатический подрайон IIБ</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="IIВ">
+                <xs:annotation>
+                    <xs:documentation>климатический подрайон IIВ</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="IIГ">
+                <xs:annotation>
+                    <xs:documentation>климатический подрайон IIГ</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="III">
+                <xs:annotation>
+                    <xs:documentation>климатический район III</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="IIIА">
+                <xs:annotation>
+                    <xs:documentation>климатический подрайон IIIА</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="IIIБ">
+                <xs:annotation>
+                    <xs:documentation>климатический подрайон IIIБ</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="IIIВ">
+                <xs:annotation>
+                    <xs:documentation>климатический подрайон IIIВ</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="IV">
+                <xs:annotation>
+                    <xs:documentation>климатический район IV</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="IVА">
+                <xs:annotation>
+                    <xs:documentation>климатический подрайон IVА</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="IVБ">
+                <xs:annotation>
+                    <xs:documentation>климатический подрайон IVБ</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="IVВ">
+                <xs:annotation>
+                    <xs:documentation>климатический подрайон IVВ</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="IVГ">
+                <xs:annotation>
+                    <xs:documentation>климатический подрайон IVГ</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="tGeologicalConditions">
+        <xs:annotation>
+            <xs:documentation>Инженерно-геологические условия</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="I">
+                <xs:annotation>
+                    <xs:documentation>I (простые)</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="II">
+                <xs:annotation>
+                    <xs:documentation>II (средней сложности)</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="III">
+                <xs:annotation>
+                    <xs:documentation>III (сложные)</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="tWindDistrict">
+        <xs:annotation>
+            <xs:documentation>Ветровой район</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="Iа">
+                <xs:annotation>
+                    <xs:documentation>Ветровой район Iа</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="I">
+                <xs:annotation>
+                    <xs:documentation>Ветровой район I</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="II">
+                <xs:annotation>
+                    <xs:documentation>Ветровой район II</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="III">
+                <xs:annotation>
+                    <xs:documentation>Ветровой район III</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="IV">
+                <xs:annotation>
+                    <xs:documentation>Ветровой район IV</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="V">
+                <xs:annotation>
+                    <xs:documentation>Ветровой район V</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="VI">
+                <xs:annotation>
+                    <xs:documentation>Ветровой район VI</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="VII">
+                <xs:annotation>
+                    <xs:documentation>Ветровой район VII</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="tSnowDistrict">
+        <xs:annotation>
+            <xs:documentation>Снеговой район</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="I">
+                <xs:annotation>
+                    <xs:documentation>Снеговой район I</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="II">
+                <xs:annotation>
+                    <xs:documentation>Снеговой район II</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="III">
+                <xs:annotation>
+                    <xs:documentation>Снеговой район III</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="IV">
+                <xs:annotation>
+                    <xs:documentation>Снеговой район IV</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="V">
+                <xs:annotation>
+                    <xs:documentation>Снеговой район V</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="VI">
+                <xs:annotation>
+                    <xs:documentation>Снеговой район VI</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="VII">
+                <xs:annotation>
+                    <xs:documentation>Снеговой район VII</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="VIII">
+                <xs:annotation>
+                    <xs:documentation>Снеговой район VIII</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="tSeismicActivity">
+        <xs:annotation>
+            <xs:documentation>Интенсивность сейсмических воздействий</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="5">
+                <xs:annotation>
+                    <xs:documentation>5 и менее баллов</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="6">
+                <xs:annotation>
+                    <xs:documentation>6</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="7">
+                <xs:annotation>
+                    <xs:documentation>7</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="8">
+                <xs:annotation>
+                    <xs:documentation>8</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="9">
+                <xs:annotation>
+                    <xs:documentation>9</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="10">
+                <xs:annotation>
+                    <xs:documentation>Более 9 баллов</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="tConstructionType">
+        <xs:annotation>
+            <xs:documentation>Вид работ</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:integer">
+            <xs:enumeration value="1">
+                <xs:annotation>
+                    <xs:documentation>Строительство</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="2">
+                <xs:annotation>
+                    <xs:documentation>Реконструкция</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="3">
+                <xs:annotation>
+                    <xs:documentation>Капитальный ремонт</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="4">
+                <xs:annotation>
+                    <xs:documentation>Снос</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="5">
+                <xs:annotation>
+                    <xs:documentation>Сохранение объекта культурного наследия</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="tUnique">
+        <xs:annotation>
+            <xs:documentation>Сведения об отнесении объекта к уникальным объектам (номер подпункта пункта 2 статьи 48.1 Градостроительного кодекса Российской Федерации)</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="1">
+                <xs:annotation>
+                    <xs:documentation>1) высота более чем 100 метров, для ветроэнергетических установок - более чем 250 метров</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="2">
+                <xs:annotation>
+                    <xs:documentation>2) пролеты более чем 100 метров</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="3">
+                <xs:annotation>
+                    <xs:documentation>3) наличие консоли более чем 20 метров</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="4">
+                <xs:annotation>
+                    <xs:documentation>4) заглубление подземной части (полностью или частично) ниже планировочной отметки земли более чем на 15 метров</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="tDangerousAndComplex">
+        <xs:annotation>
+            <xs:documentation>Сведения об отнесении объекта к особо опасным и технически сложным объектам (номер подпункта пункта 1 статьи 48.1 Градостроительного кодекса Российской Федерации)</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="1">
+                <xs:annotation>
+                    <xs:documentation>1) объекты использования атомной энергии (в том числе ядерные установки, пункты хранения ядерных материалов и радиоактивных веществ, пункты хранения радиоактивных отходов)</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="2">
+                <xs:annotation>
+                    <xs:documentation>2) гидротехнические сооружения первого и второго классов, устанавливаемые в соответствии с законодательством о безопасности гидротехнических сооружений</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="3">
+                <xs:annotation>
+                    <xs:documentation>3) сооружения связи, являющиеся особо опасными, технически сложными в соответствии с законодательством Российской Федерации в области связи</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="4">
+                <xs:annotation>
+                    <xs:documentation>4) линии электропередачи и иные объекты электросетевого хозяйства напряжением 330 киловольт и более</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="5">
+                <xs:annotation>
+                    <xs:documentation>5) объекты космической инфраструктуры</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="6">
+                <xs:annotation>
+                    <xs:documentation>6) объекты инфраструктуры воздушного транспорта, являющиеся особо опасными, технически сложными объектами в соответствии с воздушным законодательством Российской Федерации</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="7">
+                <xs:annotation>
+                    <xs:documentation>7) объекты капитального строительства инфраструктуры железнодорожного транспорта общего пользования, являющиеся особо опасными, технически сложными объектами в соответствии с законодательством Российской Федерации о железнодорожном транспорте</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="8">
+                <xs:annotation>
+                    <xs:documentation>8) объекты инфраструктуры внеуличного транспорта</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="9">
+                <xs:annotation>
+                    <xs:documentation>9) портовые гидротехнические сооружения, относящиеся к объектам инфраструктуры морского порта, за исключением объектов инфраструктуры морского порта, предназначенных для стоянок и обслуживания маломерных, спортивных парусных и прогулочных судов</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="10.1">
+                <xs:annotation>
+                    <xs:documentation>10.1) тепловые электростанции мощностью 150 мегаватт и выше</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="10.2">
+                <xs:annotation>
+                    <xs:documentation>10.2) подвесные канатные дороги</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="11а">
+                <xs:annotation>
+                    <xs:documentation>а) опасные производственные объекты I и II классов опасности, на которых получаются, используются, перерабатываются, образуются, хранятся, транспортируются, уничтожаются опасные вещества</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="11б">
+                <xs:annotation>
+                    <xs:documentation>б) опасные производственные объекты, на которых получаются, транспортируются, используются расплавы черных и цветных металлов, сплавы на основе этих расплавов с применением оборудования, рассчитанного на максимальное количество расплава 500 килограммов и более</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="11в">
+                <xs:annotation>
+                    <xs:documentation>в) опасные производственные объекты, на которых ведутся горные работы (за исключением добычи общераспространенных полезных ископаемых и разработки россыпных месторождений полезных ископаемых, осуществляемых открытым способом без применения взрывных работ), работы по обогащению полезных ископаемых</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="tPlacement">
+        <xs:annotation>
+            <xs:documentation>Сведения о месте расположения объекта капитального строительства</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="1">
+                <xs:annotation>
+                    <xs:documentation>Объекты, расположенные на суше</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="2">
+                <xs:annotation>
+                    <xs:documentation>Водный объект</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+        </xs:restriction>
+    </xs:simpleType>
+
+</xs:schema>
