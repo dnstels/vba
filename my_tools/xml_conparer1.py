@@ -33,7 +33,7 @@ def xmlTreeToDataFrame(tree, path, names, index=0, total=0):
     if index>0:
         outDataSet = pd.DataFrame()
     else:
-        outDataSet = pd.DataFrame({'Path':f'/{path}','Text':root.text, 'Attr': [root.attrib]})
+        outDataSet = pd.DataFrame({'Path':f'/{path}','Text':tree.text, 'Attr': [tree.attrib]})
     global regex
     #if index==0 :
         #bar.printProgressBar(index, total,  prefix = 'Progress:', suffix = 'Complete', length = 50)
@@ -71,12 +71,34 @@ outDataSet=xmlTreeToDataFrame(root, path,names=list())
 outDataSet_new=xmlTreeToDataFrame(root_new, path_new,names=list())
 #print(outDataSet.head(10))
 
-outDataSet['Attr'] = outDataSet.Attr.transform(lambda k: frozenset(k.items()))
+outDataSet['Attr'] = outDataSet['Attr'].transform(lambda k: frozenset(k.items()))
 outDataSet_new['Attr'] = outDataSet_new.Attr.transform(lambda k: frozenset(k.items()))
 
 #print(outDataSet.head(10))
 
-compareDataSet = outDataSet.merge(outDataSet_new, on=['Path'], how='outer', indicator=True).loc[lambda x: x['_merge'] != 'both']
+compareDataSet = outDataSet.merge(outDataSet_new, how='outer', indicator=True).loc[lambda x: x['_merge'] != 'both']
+
+
+def unFrozeset(froze):
+    unfroze=[]
+    for s in froze:
+        if len(s)<1:
+            unfroze.append(dict())
+            continue
+        d={}
+        for x in s:
+            d[x[0]]=x[1]
+        unfroze.append(d)
+    return unfroze
+
+#compareDataSet['Attr'] = [{x[0]: x[1]} for s in compareDataSet['Attr'] for x in s if len(s)>1]
+compareDataSet['Attr'] = unFrozeset(compareDataSet['Attr'])
+
+
+# =============================================================================
+# compareDataSet['Attr_x'] = [{x[0]: x[1] for s in compareDataSet['Attr_x'] for x in s}]
+# compareDataSet['Attr_y'] = [{x[0]: x[1] for s in compareDataSet['Attr_y'] for x in s}]
+# =============================================================================
 
 #print(var3)
 
